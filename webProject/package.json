@@ -1,0 +1,22 @@
+{
+  "name": "webproject",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.6",
+    "express": "^4.16.4",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "mariadb": "^2.5.5",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.8.0",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.2"
+  }
+}

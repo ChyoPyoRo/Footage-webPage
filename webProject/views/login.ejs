@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+</head>
+<body>
+    <div id="header">footage</div>
+    <div id="content">
+        <form action="/login" method="POST">
+            <div>
+                <label>ID : </label>
+                <input type="text" name="userId">                
+            </div>
+            <div>
+                <label>PW : </label>
+                <input type="text" name="userPW">
+            </div>
+            <div>
+                <input type="submit" id="submit" value="Log in">
+            </div>
+        </form>
+    </div>
+    <div id="button">
+        <form action="/signup" method="GET">
+            <input type="submit" id="_signButton" value="sign up">
+        </form>
+    </div>
+</body>
+</html>
