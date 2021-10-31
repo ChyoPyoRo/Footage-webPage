@@ -35,7 +35,7 @@ router.post('/signup', function(req,res,next){
     })
 })
 
-
+/*passport사용해서 인증 구현 */
 router.post('/login', function(req,res,next){//로그인페이지에서 로그인할시 / 마이페이지 이
   models.user.findOne({
     where : {uid: "aaa"}
@@ -50,5 +50,18 @@ router.post('/login', function(req,res,next){//로그인페이지에서 로그�
   });
 });
 
+/*발자취 목록*/
+router.post('/allFoot', function(req,res,next){
+  res.render('allFoot');
+});
 
+/*유저정보 수정하기*/
+router.post('/userInfoFix', function(req,res,next){
+  res.render('userInfoFix');
+});
+
+/*발자취 올리기*/
+router.post('/footPost', function(req,res,next){
+  res.render('footPost');
+});
 module.exports = router;
