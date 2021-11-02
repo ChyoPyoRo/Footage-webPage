@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="header">
+        <td>Hi, <%= user.uid %></td>
+    </div>
+    <div id="button">
+        <div id ="userInfoFix">
+            <form action="/userInfoFix" method="GET">
+                <input type="submit" id="_signButton" value="개인정보 수정">
+            </form>
+        </div>
+        <div id="footPost">
+            <form action="/footPost" method="GET">
+                <input type="submit" id="_signButton" value="발자취 추가하기">
+            </form>
+        </div>
+        <div id = "allFoot">
+            <form action="/allFoot" method="GET">
+                <input type="submit" id="_signButton" value="전체 발자취 확인">
+            </form>
+        </div>
+    </div>
+    <div id="list"></div>
+</body>
+</html>
