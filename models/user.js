@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
             unique: true
         },
         upw: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(100),
             allowNull: false
         },
         nickname: {

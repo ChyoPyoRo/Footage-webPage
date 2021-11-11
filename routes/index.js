@@ -5,7 +5,16 @@ var models = require('../models');
 const user = require('../models/user');
 var passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy; //passport 참조
+const { session } = require('passport');
 
+
+var isAuthenticated = function(req,res,next){
+  console.log(123);
+  if(req.isAuthenticated()){
+    console.log('it work');
+    return next();}
+  res.redirect('/signup');
+};
 
 
 /* 로그인 페이지 */
@@ -45,16 +54,21 @@ router.post('/signup', function(req,res,next){
 
 /*passport사용해서 인증 구현 */
 router.post('/login', 
-  passport.authenticate('local',{successRedirect: 'myPage',
-                                failureRedirect : '/',
+  passport.authenticate('local',{successRedirect: '/myPage',
+                                failureRedirect : '/signup',
                                 failureFlash: true},
 )
 );
 
 /*마이 페이지*/
-router.get('/myPage', function(req,res,next){
-  res.render('myPage', );
+router.get('/myPage', isAuthenticated, function(req,res,next){
+  console.log(123123);
+  console.log(req.user.uid);
+  res.render('myPage', {userId : req.user.uid});
+  
 });
+//desirealizeUser에서 done의 두번째 인자가 request.user안에 저장된다.
+
 
 /*발자취 목록*/
 router.get('/allFoot', function(req,res,next){
@@ -90,3 +104,5 @@ router.post('/footPost', function(req,res,next){
   })
 });
 module.exports = router;
+
+
