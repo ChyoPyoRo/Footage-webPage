@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>발자취 수정하기</title>
+    <title>signup</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
-
 <body>
-    <div id="header">발자취 등록하기</div>
+    <div id="header">footage</div>
     <div id="content">
-        <form action="/footPost" method="POST">
-            <div>
-                <label>발자취 이름 : </label>
-                <input type="text" name="footName">
+        <form action="/userInfoFix" method="POST">
+            <div id="uid">
+                <label>ID : </label>
+                <input type="text" name="userID" value= "<%= userID %>">      
             </div>
-            <div>
-                <label>발자취 내용 : </label>
-                <input type="text" name="footCont" id="footCont">
+            <div id="upw">
+                <label>PW : </label>
+                <input type="text" name="userPW" value= "<%= userPW %>">
             </div>
-            <div>
-                <input type="submit" id="submit" value="등록하기">
+            <div id="uname">
+                <label>NICKNAME : </label>
+                <input type="text" name="userName" value= "<%= nickname %>">
             </div>
+            <div id="submit">
+                <input type="submit" value="submit">
+            </div>
+        </form>
+    </div>
 </body>
-
 </html>

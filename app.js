@@ -24,7 +24,9 @@ const MySQLStore = require('express-mysql-session');
 const flash = require('connect-flash');
 const db = require('./models/index.js');
 
-const bcrypt = require('bcrypt');
+const methodOverride = require('method-override');
+
+// app.use(methodOverride('_method'));
 
 var app = express();
 

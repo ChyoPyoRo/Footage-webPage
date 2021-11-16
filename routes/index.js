@@ -71,28 +71,60 @@ router.get('/myPage', isAuthenticated, function(req,res,next){
 
 
 /*발자취 목록*/
-router.get('/allFoot', function(req,res,next){
-  res.render('allFoot');
+router.get('/allFoot', isAuthenticated, function(req,res,next){
+  console.log(req.user);
+  models.footage.findAll({where :{uid : req.user.uid} })
+  .then(result => {
+    console.log(11,result);
+    res.render('allFoot', {
+      posts : result
+    });
+  });
 });
 
 /*유저정보 수정하기*/
-router.get('/userInfoFix', function(req,res,next){
-  res.render('userInfoFix');
+router.get('/userInfoFix', isAuthenticated, function(req,res,next){
+  res.render('userInfoFix',{
+    userID : req.user.uid,
+    userPW : req.user.upw,
+    nickname : req.user.nickname
+  });
 });
 
-/*발자취 사이트*/
-router.get('/footPost', function(req,res,next){
+router.post('/userInfoFix', isAuthenticated, function(req,res,next){
+  let postID = req.params.id;
+
+  models.user.update({
+    uid : req.user.uid,
+    upw : req.user.upw,
+    nickname : req.user.nickname,},
+    {
+      where: {id:postID}
+  }).then(result =>{
+    console.log("개인정보 수정");
+    res.redirect("/myPage");
+  })
+  .catch(err=>{
+    console.log("개인정보 수정 실패");
+    console.log(err);
+    res.redirect('/footPost');
+  })
+})
+
+/*발자취 등록*/
+router.get('/footPost', isAuthenticated, function(req,res,next){
   res.render('footPost');
 });
 
 /*발자취 데이터등록 및 오류*/
-router.post('/footPost', function(req,res,next){
+router.post('/footPost', isAuthenticated, function(req,res,next){
   let body = req.body;
-
-  models.user.create({
-    foot_name : body.footName,
+  console.log(body);
+  models.footage.create({
+    foot_name : body.foot_name,
     footcontent : body.footCont,
     deleted : 0,
+    uid : req.user.uid
   }).then(result =>{
     console.log("발자취 등록 완료");
     res.redirect("/myPage");
@@ -103,6 +135,34 @@ router.post('/footPost', function(req,res,next){
     res.redirect('/footPost');
   })
 });
+
+
+router.get('/logout', function(req,res){
+  console.log(req.session);
+  req.logout();
+  req.session.save(function(){
+    res.redirect('/');
+  })
+  console.log(req.session);
+});
+
+router.get('/edit/:id', isAuthenticated, function(req,res,next){
+  let postID = req.params.id;
+
+  models.Footage.findOne({
+    where: {id:postID, uid:req.user.uid }
+  })
+  .then( result => {
+    res.render('footFix',{
+      post:result
+    });
+  })
+  .catch( err=> {
+    console.log("데이터 조회 실패");
+    console.log(err);
+  });
+});
+
+
+
 module.exports = router;
-
-

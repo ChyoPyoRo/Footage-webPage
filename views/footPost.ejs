@@ -13,7 +13,7 @@
         <form action="/footPost" method="POST">
             <div>
                 <label>발자취 이름 : </label>
-                <input type="text" name="footName">
+                <input type="text" name="foot_name" id="foot_name">
             </div>
             <div >
                 <label>발자취 내용 : </label>
@@ -23,6 +23,11 @@
                 <input type="submit" id="submit" value="등록하기">
             </div>
         </form>
+        <div id = "backMypage">
+            <form action="/myPage" method="GET">
+                <input type="submit" id="_signButton" value="돌아가기">
+            </form>
+        </div>
 
     </div>
 </body>

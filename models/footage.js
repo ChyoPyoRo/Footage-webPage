@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => sequelize.define(
     "footage",
     {
         // 스키마 정의
-        footName: {
+        foot_name: {
             // column 이름
             type: DataTypes.STRING,
             allowNull: false // null 허용 설정

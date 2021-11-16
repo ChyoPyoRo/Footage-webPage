@@ -5,8 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
 <body>
-    <p>이곳은 전체 발자취를 확인할 수 있는 페이지 입니다</p>
+    <table>
+        <tr>
+            <td>제목</td>
+            <td>작성자</td>
+            <td>작성일</td>
+        </tr>
+        <% for(let post of posts) { %>
+            <tr>
+                <td><%= post.foot_name %></td>
+                <td><%= post.uid %></td>
+                <td><%= post.createdAt %></td>
+                <td><form action=''>
+                    <button><a href="/edit/<%=post.id%>">수정</a></button>>
+                </form></td>
+            </tr>
+        <% } %>
+    </table>
 </body>
 </html>
