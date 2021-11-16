@@ -138,11 +138,13 @@ router.post('/footPost', isAuthenticated, function(req,res,next){
 
 
 router.get('/logout', function(req,res){
+  console.log('--------------')
   console.log(req.session);
   req.logout();
   req.session.save(function(){
     res.redirect('/');
   })
+  console.log('>>>>>>>>>>>>>>>>>>>>')
   console.log(req.session);
 });
 

@@ -114,16 +114,11 @@ passport.deserializeUser(async(id, done) => { //id를 넣는 것은 오류가 in
       var user = result[0];
       done(null, user);
     }
-  */
-  
-  
-  
+  */ 
     done(null, id);
     console.log('-----------------------------------');
     //console.log(id);
-
-  
-   // 여기의 user가 req.user가 됨
+    // 여기의 user가 req.user가 됨
 });
 
 
